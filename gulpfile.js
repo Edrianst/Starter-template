@@ -66,6 +66,11 @@ function fonts () {
     .pipe(gulp.dest(paths.dist + 'fonts/'))
 }
 
+function plugins () {
+    return gulp.src(paths.dev + 'plugins/**/*.*')
+    .pipe(gulp.dest(paths.dist + 'plugins/'))
+}
+
 function clean () {
     return del('dist/')
 }
@@ -76,6 +81,7 @@ function watch() {
     gulp.watch(paths.dev + '*.html', htmls);
     gulp.watch(paths.dev + 'img/**/*.*', imgs);
     gulp.watch(paths.dev + 'fonts/**/*.*', fonts);
+    gulp.watch(paths.dev + 'plugins/**/*.*', plugins);
 }
 
 function serve() {
@@ -97,6 +103,6 @@ exports.fonts = fonts;
 
 gulp.task('default', gulp.series(
     clean,
-    gulp.parallel(styles, scripts, htmls, imgs, fonts),
+    gulp.parallel(styles, scripts, htmls, imgs, fonts, plugins),
     gulp.parallel(watch, serve)
   ));
