@@ -1,0 +1,16 @@
+// bootstrap
+
+@import "../../bootstrap/scss/bootstrap-reboot.scss";
+@import "../../bootstrap/scss/_grid.scss";
+
+//config
+
+@import "config/*.scss";
+
+//layout
+
+@import "layout/*.scss";
+
+//sections 
+
+@import "sections/*.scss";
