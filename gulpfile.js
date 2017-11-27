@@ -100,6 +100,7 @@ exports.imgs = imgs;
 exports.clean = clean;
 exports.watch = watch;
 exports.fonts = fonts;
+exports.plugins = plugins;
 
 gulp.task('default', gulp.series(
     clean,
