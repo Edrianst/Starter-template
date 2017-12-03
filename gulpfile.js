@@ -77,7 +77,17 @@ gulp.task('htmls', function () {
 
 gulp.task('images', function () {
     return gulp.src(paths.dev + 'img/*.*')
-        .pipe(imagemin())
+        .pipe(imagemin([
+            imagemin.svgo({
+                plugins: [
+                    { removeUselessDefs: false },
+                    { cleanupIDs: true }
+                ]
+            }),
+            imagemin.gifsicle(),
+            imagemin.jpegtran(),
+            inagemin.optipng()
+        ]))
         .pipe(gulp.dest(paths.dist + 'img/'))
         .pipe(reload({
             stream: true
