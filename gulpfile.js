@@ -86,7 +86,7 @@ gulp.task('images', function () {
             }),
             imagemin.gifsicle(),
             imagemin.jpegtran(),
-            inagemin.optipng()
+            imagemin.optipng()
         ]))
         .pipe(gulp.dest(paths.dist + 'img/'))
         .pipe(reload({
