@@ -77,16 +77,24 @@ gulp.task('htmls', function () {
 
 gulp.task('images', function () {
     return gulp.src(paths.dev + 'img/*.*')
+        .pipe(newer(paths.dev + 'img/*.*'))
         .pipe(imagemin([
             imagemin.svgo({
-                plugins: [
-                    { removeUselessDefs: false },
-                    { cleanupIDs: true }
+                plugins: [{
+                        removeUselessDefs: false
+                    },
+                    {
+                        cleanupIDs: true
+                    }
                 ]
             }),
             imagemin.gifsicle(),
-            imagemin.jpegtran(),
-            imagemin.optipng()
+            imagemin.jpegtran({
+                progressive: true
+            }),
+            imagemin.optipng({
+                optimizationlevel: 3
+            })
         ]))
         .pipe(gulp.dest(paths.dist + 'img/'))
         .pipe(reload({
