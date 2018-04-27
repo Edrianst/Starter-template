@@ -22,6 +22,7 @@ const uglify = require('gulp-uglify');
 
 
 const imagemin = require('gulp-imagemin');
+const newer = require('gulp-newer');
 
 //server
 const browserSync = require('browser-sync').create();
@@ -76,8 +77,8 @@ gulp.task('htmls', function () {
 });
 
 gulp.task('images', function () {
-    return gulp.src(paths.dev + 'img/*.*')
-        .pipe(newer(paths.dev + 'img/*.*'))
+    return gulp.src(paths.dev + 'img/**/*.*')
+        .pipe(newer(paths.dev + 'img/**/*.*'))
         .pipe(imagemin([
             imagemin.svgo({
                 plugins: [{
