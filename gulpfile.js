@@ -90,9 +90,6 @@ gulp.task('images', function () {
                 ]
             }),
             imagemin.gifsicle(),
-            imagemin.jpegtran({
-                progressive: true
-            }),
             imagemin.optipng({
                 optimizationlevel: 3
             })
